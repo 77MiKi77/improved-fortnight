@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
@@ -34,7 +35,13 @@ public partial class MainWindow : Window
     private void SetSize(double delta) { _size = Math.Clamp(_size+delta,.45,1.9); Width=300*_size; Height=360*_size; }
     private void Interact()
     {
-        ShowBubble(); (_interaction++ % 3) switch { 0 => Jump(), 1 => Squash(), _ => Shake() };
+        ShowBubble();
+        switch (_interaction++ % 3)
+        {
+            case 0: Jump(); break;
+            case 1: Squash(); break;
+            default: Shake(); break;
+        }
     }
     private void ShowBubble()
     {
