@@ -1,0 +1,8 @@
+{
+  "name": "Rose Dress Companion",
+  "description": "A soft anime chibi companion with long wavy black hair, butterfly clip, white eyelet dress and black shoes.",
+  "spritesheet": "spritesheet.webp",
+  "frameWidth": 176,
+  "frameHeight": 192,
+  "rows": ["idle","running-right","running-left","waving","jumping","failed","waiting","running","review"]
+}

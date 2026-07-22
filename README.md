@@ -1,75 +1,31 @@
-<header>
+# Rose Desk Pet
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+一个 Windows x64 桌宠：透明无边框、默认置顶、可拖动、滚轮缩放、右键菜单，以及点击后的随机中文气泡和跳跃／压扁回弹／左右抖动互动。
 
-# Introduction to GitHub
+## 角色素材
 
-_Get started using GitHub in less than an hour._
+基于四张参考照片共同提炼的设定：长款微卷黑发、中分、白色蝴蝶发夹、珍珠耳钉、温柔圆眼与微笑；白色镂空刺绣泡袖连衣裙、白袜、黑色厚底系带鞋与细手链。`assets/action-reference-sheet.png` 和 `assets/bonus-actions.png` 是统一画风的动作设计稿；主体 PNG 已完成去除洋红背景。
 
-</header>
+动作稿包含待机、挥手、开心跳跃、左顾右盼、坐下休息、困倦／睡觉、生气鼓嘴、害羞、思考、奔跑、比心、欢呼等，并以统一朝向和完整肢体输出，便于继续切分。`tools/prepare-sprites.ps1` 可用 ImageMagick 输出独立透明动作图。
 
-<!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
--->
+## 在 Windows 直接生成 EXE
 
-## Step 1: Create a branch
+安装 [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) 后，在 PowerShell 执行：
 
-_Welcome to "Introduction to GitHub"! :wave:_
+```powershell
+cd PetRose
+.\publish-win-x64.ps1
+```
 
-**What is GitHub?**: GitHub is a collaboration platform that uses _[Git](https://docs.github.com/get-started/quickstart/github-glossary#git)_ for versioning. GitHub is a popular place to share and contribute to [open-source](https://docs.github.com/get-started/quickstart/github-glossary#open-source) software.
-<br>:tv: [Video: What is GitHub?](https://www.youtube.com/watch?v=pBy1zgt0XPc)
+完成后双击 `dist\RoseDeskPet-win-x64\RoseDeskPet.exe`。发布为自包含 x64 单文件，不要求最终使用者另装 .NET。
 
-**What is a repository?**: A _[repository](https://docs.github.com/get-started/quickstart/github-glossary#repository)_ is a project containing files and folders. A repository tracks versions of files and folders. For more information, see "[About repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories)" from GitHub Docs.
+## 操作
 
-**What is a branch?**: A _[branch](https://docs.github.com/en/get-started/quickstart/github-glossary#branch)_ is a parallel version of your repository. By default, your repository has one branch named `main` and it is considered to be the definitive branch. Creating additional branches allows you to copy the `main` branch of your repository and safely make any changes without disrupting the main project. Many people use branches to work on specific features without affecting any other parts of the project.
+- **左键拖拽**：移动桌宠。
+- **单击角色**：依次跳跃、压扁回弹、左右摇晃，同时弹出不遮挡角色的随机中文白色对话气泡。
+- **滚轮**：缩放（45%–190%）。
+- **右键角色**：放大、缩小、始终置顶开关、退出。
 
-Branches allow you to separate your work from the `main` branch. In other words, everyone's work is safe while you contribute. For more information, see "[About branches](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches)".
+## hatch-pet 包装
 
-**What is a profile README?**: A _[profile README](https://docs.github.com/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)_ is essentially an "About me" section on your GitHub profile where you can share information about yourself with the community on GitHub.com. GitHub shows your profile README at the top of your profile page. For more information, see "[Managing your profile README](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)".
-
-![profile-readme-example](/images/profile-readme-example.png)
-
-### :keyboard: Activity: Your first branch
-
-1. Open a new browser tab and navigate to your newly made repository. Then, work on the steps in your second tab while you read the instructions in this tab.
-2. Navigate to the **< > Code** tab in the header menu of your repository.
-
-   ![code-tab](/images/code-tab.png)
-
-3. Click on the **main** branch drop-down.
-
-   ![main-branch-dropdown](/images/main-branch-dropdown.png)
-
-4. In the field, name your branch `my-first-branch`. In this case, the name must be `my-first-branch` to trigger the course workflow.
-5. Click **Create branch: my-first-branch** to create your branch.
-
-   ![create-branch-button](/images/create-branch-button.png)
-
-   The branch will automatically switch to the one you have just created.
-   The **main** branch drop-down bar will reflect your new branch and display the new branch name.
-
-6. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
-
-<footer>
-
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
-
----
-
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/introduction-to-github) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
-
-&copy; 2024 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
-</footer>
+`hatch-pet/pet.json` 保留了 8×9 atlas 工作流所需的 manifest。此项目按 hatch-pet 的“先建立稳定角色基准图，再生成逐动作参考、去背景、QA 与打包”流程建立；桌宠程序当前使用最稳定的透明待机主图，并用 WPF 变换制作交互动画。
